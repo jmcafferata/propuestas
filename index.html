@@ -615,12 +615,12 @@
         <div class="hero-content">
             <h1>Programa Audiovisual de Capacitación – NASA</h1>
             <p>Transformando contenido técnico en experiencias audiovisuales claras, humanas y atractivas</p>
-            <a href="#contact" class="cta-button">Solicitar Propuesta</a>
+            <a href="#concept" class="cta-button">Empezar</a>
         </div>
     </section>
 
     <!-- Concept Section -->
-    <section class="concept">
+    <section class="concept" id="concept">
         <div class="container">
             <h2>Concepto General</h2>
             <p class="section-intro">
@@ -903,32 +903,17 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <!-- Closing Section -->
+    <section class="contact">
         <div class="container">
-            <h2 style="color: white;">Solicitar Propuesta</h2>
-            <p class="section-intro" style="color: rgba(255,255,255,0.9);">
-                ¿Listo para transformar la capacitación en NASA? Contáctenos para recibir una propuesta detallada
+            <h2 style="color: white;">Transformando la Capacitación Nuclear</h2>
+            <p class="section-intro" style="color: rgba(255,255,255,0.9); max-width: 800px; margin: 2rem auto 0;">
+                Este programa audiovisual está diseñado para convertir contenido técnico complejo en experiencias de aprendizaje claras, humanas y memorables. Cada nivel de producción ofrece diferentes herramientas visuales y narrativas para maximizar la comprensión y retención del conocimiento.
             </p>
-            <form class="contact-form" action="#" method="POST">
-                <div class="form-group">
-                    <label for="name">Nombre completo</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email corporativo</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Teléfono</label>
-                    <input type="tel" id="phone" name="phone">
-                </div>
-                <div class="form-group">
-                    <label for="message">Mensaje / Consulta</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="submit-button">Enviar Solicitud</button>
-            </form>
+            <p class="section-intro" style="color: var(--primary-purple); font-weight: 600; margin-top: 2rem;">
+                Nucleoeléctrica Argentina<br>
+                Energía nuclear para potenciar el futuro del país
+            </p>
         </div>
     </section>
 
@@ -945,13 +930,6 @@
                     });
                 }
             });
-        });
-
-        // Form submission handler
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('¡Gracias por su interés! Nos pondremos en contacto a la brevedad.');
-            this.reset();
         });
 
         // Intersection Observer for fade-in animations
