@@ -344,6 +344,90 @@
             font-weight: 300;
         }
 
+        /* Visual Examples Section */
+        .visual-examples {
+            background: var(--dark-bg);
+            border-top: 1px solid rgba(91,107,196,0.2);
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .example-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(91,107,196,0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .example-card:hover {
+            border-color: var(--primary-purple);
+            box-shadow: 0 8px 30px rgba(91,107,196,0.3);
+            transform: translateY(-5px);
+        }
+
+        .example-header {
+            padding: 1.5rem;
+            background: rgba(91,107,196,0.1);
+            border-bottom: 1px solid rgba(91,107,196,0.2);
+        }
+
+        .example-number {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .example-header h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            background: #000;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            background: #000;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .example-description {
+            padding: 1.5rem;
+            color: var(--text-light);
+            font-weight: 300;
+            text-align: center;
+            margin: 0;
+        }
+
         /* Pricing Section */
         .pricing {
             background: var(--medium-dark);
@@ -660,6 +744,73 @@
                     <div class="timeline-icon">5</div>
                     <div class="timeline-title">Validación</div>
                     <p>Testeo con usuarios piloto y ajustes finales</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Examples Section -->
+    <section class="visual-examples">
+        <div class="container">
+            <h2>Ejemplos Visuales de Producción</h2>
+            <p class="section-intro">Mira la diferencia en calidad entre cada nivel</p>
+            
+            <div class="examples-grid">
+                <!-- Opción 1: Registro Limpio -->
+                <div class="example-card">
+                    <div class="example-header">
+                        <span class="example-number">OPCIÓN 1</span>
+                        <h3>Registro Limpio</h3>
+                    </div>
+                    <div class="video-container">
+                        <video controls poster="">
+                            <source src="opcion1.mp4" type="video/mp4">
+                            Tu navegador no soporta videos HTML5.
+                        </video>
+                    </div>
+                    <p class="example-description">Filmación profesional con edición básica</p>
+                </div>
+
+                <!-- Opción 2: Pro Corporativo -->
+                <div class="example-card">
+                    <div class="example-header">
+                        <span class="example-number">OPCIÓN 2</span>
+                        <h3>Pro Corporativo</h3>
+                    </div>
+                    <div class="video-container">
+                        <video controls poster="">
+                            <source src="opcion2.mp4" type="video/mp4">
+                            Tu navegador no soporta videos HTML5.
+                        </video>
+                    </div>
+                    <p class="example-description">Diseño visual NASA con gráficos dinámicos</p>
+                </div>
+
+                <!-- Opción 3: Premium E-Learning -->
+                <div class="example-card">
+                    <div class="example-header">
+                        <span class="example-number">OPCIÓN 3</span>
+                        <h3>Premium E-Learning</h3>
+                    </div>
+                    <div class="video-container">
+                        <video controls poster="">
+                            <source src="opcion3.mp4" type="video/mp4">
+                            Tu navegador no soporta videos HTML5.
+                        </video>
+                    </div>
+                    <p class="example-description">Animación híbrida con storytelling avanzado</p>
+                </div>
+
+                <!-- Opción 4: Interactiva SCORM -->
+                <div class="example-card">
+                    <div class="example-header">
+                        <span class="example-number">OPCIÓN 4</span>
+                        <h3>Interactiva SCORM</h3>
+                    </div>
+                    <div class="image-container">
+                        <img src="opcion4.jpg" alt="Plataforma Interactiva SCORM">
+                    </div>
+                    <p class="example-description">Plataforma completa con navegación interactiva</p>
                 </div>
             </div>
         </div>
