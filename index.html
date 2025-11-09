@@ -12,25 +12,32 @@
         }
 
         :root {
-            --primary-blue: #0066cc;
-            --secondary-teal: #00a9ce;
-            --dark-blue: #003d7a;
+            --primary-purple: #5B6BC4;
+            --secondary-blue: #4A5AB3;
+            --dark-bg: #0a0a0a;
+            --medium-dark: #1a1a1a;
             --light-gray: #f4f7fa;
             --white: #ffffff;
             --text-dark: #1a1a2e;
-            --gradient: linear-gradient(135deg, #0066cc 0%, #00a9ce 100%);
+            --text-light: rgba(255,255,255,0.9);
+            --gradient: linear-gradient(135deg, #5B6BC4 0%, #4A5AB3 100%);
+            --accent-gradient: linear-gradient(90deg, #5B6BC4 0%, #7B8BE4 100%);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
+            background: var(--dark-bg);
         }
 
         /* Hero Section */
         .hero {
-            background: var(--gradient);
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(91,107,196,0.3) 100%), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%230a0a0a" width="1200" height="600"/><circle cx="300" cy="150" r="100" fill="%235B6BC4" opacity="0.1"/><circle cx="900" cy="400" r="150" fill="%235B6BC4" opacity="0.08"/></svg>');
+            background-size: cover;
+            background-position: center;
             color: var(--white);
             min-height: 100vh;
             display: flex;
@@ -45,16 +52,21 @@
         .hero::before {
             content: '';
             position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: pulse 20s ease-in-out infinite;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(91,107,196,0.03) 2px,
+                rgba(91,107,196,0.03) 4px
+            );
+            pointer-events: none;
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.8; }
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
         }
 
         .hero-content {
@@ -68,30 +80,38 @@
             font-weight: 700;
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .hero p {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 2rem;
             animation: fadeInUp 1s ease 0.2s backwards;
+            color: var(--text-light);
+            font-weight: 300;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 1rem 3rem;
-            background: var(--white);
-            color: var(--primary-blue);
+            padding: 1.2rem 3rem;
+            background: var(--gradient);
+            color: var(--white);
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            border-radius: 50px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 4px;
+            transition: all 0.3s;
             animation: fadeInUp 1s ease 0.4s backwards;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--primary-purple);
         }
 
         .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(91,107,196,0.4);
+            background: var(--secondary-blue);
         }
 
         @keyframes fadeInUp {
@@ -117,42 +137,60 @@
 
         h2 {
             font-size: 2.5rem;
-            color: var(--dark-blue);
+            color: var(--white);
             margin-bottom: 1rem;
             text-align: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .section-intro {
             text-align: center;
             max-width: 800px;
             margin: 0 auto 3rem;
-            font-size: 1.2rem;
-            color: #555;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 300;
         }
 
         /* Concept Section */
         .concept {
-            background: var(--light-gray);
+            background: var(--medium-dark);
         }
 
         .concept-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
         .concept-card {
-            background: var(--white);
+            background: rgba(255,255,255,0.05);
             padding: 2rem;
-            border-radius: 15px;
+            border-radius: 8px;
             text-align: center;
-            transition: transform 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(91,107,196,0.2);
+            backdrop-filter: blur(10px);
         }
 
         .concept-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
+            border-color: var(--primary-purple);
+            box-shadow: 0 8px 25px rgba(91,107,196,0.3);
+        }
+
+        .concept-card h3 {
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .concept-card p {
+            color: var(--text-light);
+            font-weight: 300;
         }
 
         .concept-icon {
@@ -162,7 +200,7 @@
 
         /* Modules Section */
         .modules {
-            background: var(--white);
+            background: var(--dark-bg);
         }
 
         .modules-grid {
@@ -173,40 +211,52 @@
         }
 
         .module-card {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: var(--medium-dark);
             padding: 2rem;
-            border-radius: 20px;
-            border-left: 5px solid var(--primary-blue);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-purple);
             transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 1px solid rgba(91,107,196,0.2);
+            position: relative;
+            overflow: hidden;
         }
 
         .module-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border-left-width: 6px;
+            box-shadow: 0 8px 30px rgba(91,107,196,0.3);
         }
 
         .module-number {
             display: inline-block;
-            background: var(--primary-blue);
+            background: var(--gradient);
             color: var(--white);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
             font-weight: 700;
             margin-bottom: 1rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .module-character {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
-            color: var(--dark-blue);
+            color: var(--white);
             margin-bottom: 0.5rem;
         }
 
         .module-title {
-            font-size: 1.1rem;
-            color: #555;
+            font-size: 1rem;
+            color: var(--text-light);
             margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        .module-style {
+            color: var(--primary-purple);
+            font-style: italic;
+            font-weight: 500;
         }
 
         .module-style {
@@ -217,9 +267,11 @@
 
         /* Quote Section */
         .quote-section {
-            background: var(--gradient);
+            background: var(--medium-dark);
             color: var(--white);
             padding: 5rem 2rem;
+            border-top: 1px solid rgba(91,107,196,0.2);
+            border-bottom: 1px solid rgba(91,107,196,0.2);
         }
 
         .quote-container {
@@ -233,16 +285,21 @@
             font-style: italic;
             line-height: 1.8;
             margin-bottom: 2rem;
+            color: var(--text-light);
+            font-weight: 300;
         }
 
         .quote-author {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
+            color: var(--primary-purple);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Timeline Section */
         .timeline {
-            background: var(--light-gray);
+            background: var(--dark-bg);
         }
 
         .timeline-container {
@@ -264,26 +321,32 @@
             width: 80px;
             height: 80px;
             background: var(--gradient);
-            border-radius: 50%;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1rem;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--white);
             font-weight: 700;
+            border: 2px solid var(--primary-purple);
         }
 
         .timeline-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            color: var(--dark-blue);
+            color: var(--white);
             margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            color: var(--text-light);
+            font-weight: 300;
         }
 
         /* Pricing Section */
         .pricing {
-            background: var(--white);
+            background: var(--medium-dark);
         }
 
         .pricing-grid {
@@ -294,14 +357,15 @@
         }
 
         .pricing-card {
-            background: var(--white);
-            border: 3px solid var(--primary-blue);
-            border-radius: 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(91,107,196,0.3);
+            border-radius: 8px;
             padding: 2rem;
             text-align: center;
             transition: all 0.3s;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .pricing-card::before {
@@ -310,38 +374,43 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 5px;
+            height: 3px;
             background: var(--gradient);
         }
 
         .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(91,107,196,0.3);
+            border-color: var(--primary-purple);
         }
 
         .pricing-card.featured {
-            border-color: var(--secondary-teal);
-            transform: scale(1.05);
+            border-color: var(--primary-purple);
+            border-width: 2px;
+            background: rgba(91,107,196,0.1);
         }
 
         .pricing-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            color: var(--dark-blue);
+            color: var(--white);
             margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .pricing-price {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--primary-blue);
+            color: var(--primary-purple);
             margin-bottom: 1rem;
         }
 
         .pricing-style {
             font-style: italic;
-            color: #777;
+            color: var(--text-light);
             margin-bottom: 1.5rem;
+            font-weight: 300;
         }
 
         .pricing-features {
@@ -353,20 +422,23 @@
             margin-bottom: 0.5rem;
             padding-left: 1.5rem;
             position: relative;
+            color: var(--text-light);
+            font-weight: 300;
         }
 
         .pricing-features li::before {
             content: '✓';
             position: absolute;
             left: 0;
-            color: var(--secondary-teal);
+            color: var(--primary-purple);
             font-weight: 700;
         }
 
         /* Contact Section */
         .contact {
-            background: var(--dark-blue);
+            background: var(--dark-bg);
             color: var(--white);
+            border-top: 1px solid rgba(91,107,196,0.2);
         }
 
         .contact-form {
@@ -388,10 +460,19 @@
         .form-group textarea {
             width: 100%;
             padding: 1rem;
-            border: none;
-            border-radius: 10px;
+            border: 1px solid rgba(91,107,196,0.3);
+            border-radius: 4px;
             font-size: 1rem;
             font-family: inherit;
+            background: rgba(255,255,255,0.05);
+            color: var(--white);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-purple);
         }
 
         .form-group textarea {
@@ -400,22 +481,24 @@
         }
 
         .submit-button {
-            background: var(--secondary-teal);
+            background: var(--gradient);
             color: var(--white);
             padding: 1rem 3rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
+            border: 2px solid var(--primary-purple);
+            border-radius: 4px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .submit-button:hover {
-            background: var(--white);
-            color: var(--dark-blue);
-            transform: translateY(-3px);
+            background: var(--secondary-blue);
+            box-shadow: 0 8px 25px rgba(91,107,196,0.4);
+            transform: translateY(-2px);
         }
 
         /* Responsive */
@@ -571,7 +654,6 @@
                 <div class="timeline-item">
                     <div class="timeline-icon">4</div>
                     <div class="timeline-title">Implementación</div>
-                    <div class="timeline-title">Implementación</div>
                     <p>Entrega optimizada para Moodle y conversión SCORM</p>
                 </div>
                 <div class="timeline-item">
@@ -591,16 +673,16 @@
             
             <!-- Pricing Toggle -->
             <div style="text-align: center; margin-bottom: 3rem;">
-                <div style="display: inline-flex; background: white; padding: 0.5rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                    <button id="packBtn" class="pricing-toggle active" style="padding: 0.75rem 2rem; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; background: var(--gradient); color: white;">
+                <div style="display: inline-flex; background: rgba(255,255,255,0.05); padding: 0.5rem; border-radius: 4px; border: 1px solid rgba(91,107,196,0.3);">
+                    <button id="packBtn" class="pricing-toggle active" style="padding: 0.75rem 2rem; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; background: var(--gradient); color: white; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">
                         Pack Completo (5 videos)
                     </button>
-                    <button id="individualBtn" class="pricing-toggle" style="padding: 0.75rem 2rem; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; background: transparent; color: var(--text-dark);">
+                    <button id="individualBtn" class="pricing-toggle" style="padding: 0.75rem 2rem; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; background: transparent; color: var(--text-light); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">
                         Precio por Video
                     </button>
                 </div>
-                <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
-                    <span id="savingsNote" style="color: var(--primary-blue); font-weight: 600;">💡 Ahorra comprando el pack completo</span>
+                <p style="margin-top: 1rem; color: var(--text-light); font-size: 0.9rem; font-weight: 300;">
+                    <span id="savingsNote" style="color: var(--primary-purple); font-weight: 600;">💡 Ahorra comprando el pack completo</span>
                 </p>
             </div>
 
@@ -754,7 +836,7 @@
             packBtn.style.background = 'var(--gradient)';
             packBtn.style.color = 'white';
             individualBtn.style.background = 'transparent';
-            individualBtn.style.color = 'var(--text-dark)';
+            individualBtn.style.color = 'var(--text-light)';
             
             // Show pack prices
             document.querySelectorAll('.pack-price').forEach(el => el.style.display = 'inline');
@@ -769,7 +851,7 @@
             individualBtn.style.background = 'var(--gradient)';
             individualBtn.style.color = 'white';
             packBtn.style.background = 'transparent';
-            packBtn.style.color = 'var(--text-dark)';
+            packBtn.style.color = 'var(--text-light)';
             
             // Show individual prices
             document.querySelectorAll('.pack-price').forEach(el => el.style.display = 'none');
