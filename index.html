@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa Audiovisual de Capacitación – NASA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0066cc;
+            --secondary-teal: #00a9ce;
+            --dark-blue: #003d7a;
+            --light-gray: #f4f7fa;
+            --white: #ffffff;
+            --text-dark: #1a1a2e;
+            --gradient: linear-gradient(135deg, #0066cc 0%, #00a9ce 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: pulse 20s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--white);
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        /* Concept Section */
+        .concept {
+            background: var(--light-gray);
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .concept-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .concept-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .concept-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Modules Section */
+        .modules {
+            background: var(--white);
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .module-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            border-left: 5px solid var(--primary-blue);
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .module-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .module-number {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .module-character {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .module-title {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .module-style {
+            font-style: italic;
+            color: #777;
+            font-size: 0.95rem;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 5rem 2rem;
+        }
+
+        .quote-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .quote-author {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            background: var(--light-gray);
+        }
+
+        .timeline-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .timeline-item {
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+            position: relative;
+        }
+
+        .timeline-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: var(--white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border: 3px solid var(--primary-blue);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--secondary-teal);
+            transform: scale(1.05);
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-style {
+            font-style: italic;
+            color: #777;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-teal);
+            font-weight: 700;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--dark-blue);
+            color: var(--white);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-button {
+            background: var(--secondary-teal);
+            color: var(--white);
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background: var(--white);
+            color: var(--dark-blue);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-text {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Programa Audiovisual de Capacitación – NASA</h1>
+            <p>Transformando contenido técnico en experiencias audiovisuales claras, humanas y atractivas</p>
+            <a href="#contact" class="cta-button">Solicitar Propuesta</a>
+        </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section class="concept">
+        <div class="container">
+            <h2>Concepto General</h2>
+            <p class="section-intro">
+                Vamos a transformar los seis módulos técnicos en una experiencia audiovisual clara, humana y atractiva.
+                En lugar de "clases" tradicionales, cada módulo será presentado por un personaje: un/a actor/actriz que encarna el rol correspondiente al tema.
+            </p>
+            <div class="concept-grid">
+                <div class="concept-card">
+                    <div class="concept-icon">🎬</div>
+                    <h3>Contenido Vivo</h3>
+                    <p>No "clases" tradicionales, sino narrativas humanas que conectan</p>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-icon">🎭</div>
+                    <h3>Personajes Únicos</h3>
+                    <p>Cada módulo con su propio mundo visual y estilo narrativo</p>
+                </div>
+                <div class="concept-card">
+                    <div class="concept-icon">✨</div>
+                    <h3>Ritmo y Claridad</h3>
+                    <p>Gestualidad, presencia y tono didáctico que mantiene la atención</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section class="modules">
+        <div class="container">
+            <h2>Los Seis Módulos y Sus Personajes</h2>
+            <p class="section-intro">
+                Cada personaje tiene su propio universo visual, su forma de hablar y su manera de guiar al espectador
+            </p>
+            <div class="modules-grid">
+                <div class="module-card">
+                    <span class="module-number">Módulo 1</span>
+                    <div class="module-character">La Vocera Institucional</div>
+                    <div class="module-title">Entorno y articulación institucional</div>
+                    <div class="module-style">Fondo sobrio, colores de NASA, gestualidad amable. Ordenar el mapa conceptual desde el inicio.</div>
+                </div>
+
+                <div class="module-card">
+                    <span class="module-number">Módulo 2</span>
+                    <div class="module-character">El Planificador del Sistema</div>
+                    <div class="module-title">Mercado Eléctrico Mayorista y SADI</div>
+                    <div class="module-style">Visualización estilizada de redes y flujos energéticos. Entender cómo se coordina el país que respira electricidad.</div>
+                </div>
+
+                <div class="module-card">
+                    <span class="module-number">Módulo 3</span>
+                    <div class="module-character">La Ingeniera Energética</div>
+                    <div class="module-title">Fuentes de generación de energía</div>
+                    <div class="module-style">Gráficos comparativos dinámicos. Comprender la matriz energética con claridad.</div>
+                </div>
+
+                <div class="module-card">
+                    <span class="module-number">Módulo 4</span>
+                    <div class="module-character">La Especialista en Radioprotección</div>
+                    <div class="module-title">Física nuclear y protección radiológica</div>
+                    <div class="module-style">Escena minimalista, calma, ritmo suave. Tranquilizar, explicar, desmitificar.</div>
+                </div>
+
+                <div class="module-card">
+                    <span class="module-number">Módulo 5</span>
+                    <div class="module-character">El Ingeniero de Diseño</div>
+                    <div class="module-title">Física de reactores y seguridad nuclear</div>
+                    <div class="module-style">Diagramas estilizados del reactor. Mostrar la lógica detrás de la seguridad.</div>
+                </div>
+
+                <div class="module-card">
+                    <span class="module-number">Módulo 6</span>
+                    <div class="module-character">La Operadora de Sala</div>
+                    <div class="module-title">Funcionamiento de reactores de potencia</div>
+                    <div class="module-style">Sala de control estilizada, con transparencia visual. Conectar teoría + responsabilidad + práctica.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="quote-container">
+            <div class="quote-text">
+                "Cuando hablamos de encender un reactor, no hablamos de un botón.<br>
+                Hablamos de un proceso. Coordinado. Medido. Humano.<br>
+                Mi tarea es asegurar que cada variable esté donde tiene que estar.<br>
+                Operar es escuchar a la planta.<br>
+                Y eso se aprende mirando, entendiendo… y respetando."
+            </div>
+            <div class="quote-author">— La Operadora de Sala, Módulo 6</div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline">
+        <div class="container">
+            <h2>Planificación Estratégica de Producción</h2>
+            <p class="section-intro">Duración total estimada: 4 a 6 semanas</p>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-icon">1</div>
+                    <div class="timeline-title">Preproducción</div>
+                    <p>Reunión, casting, adaptación de guiones y diseño visual</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">2</div>
+                    <div class="timeline-title">Producción</div>
+                    <p>Filmación en estudio con dirección actoral y audio profesional</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">3</div>
+                    <div class="timeline-title">Postproducción</div>
+                    <p>Edición narrativa, gráficos y revisión técnica</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">4</div>
+                    <div class="timeline-title">Implementación</div>
+                    <div class="timeline-title">Implementación</div>
+                    <p>Entrega optimizada para Moodle y conversión SCORM</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">5</div>
+                    <div class="timeline-title">Validación</div>
+                    <p>Testeo con usuarios piloto y ajustes finales</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <h2>Niveles de Producción</h2>
+            <p class="section-intro">A mayor inversión → mejores gráficos, movimiento, storytelling y retención</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-title">Registro Limpio</div>
+                    <div class="pricing-price">$4.080.000</div>
+                    <div class="pricing-style">Informativo</div>
+                    <ul class="pricing-features">
+                        <li>Filmación profesional</li>
+                        <li>Edición básica</li>
+                        <li>Placas simples</li>
+                        <li>Audio limpio</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-title">Pro Corporativo</div>
+                    <div class="pricing-price">$6.120.000</div>
+                    <div class="pricing-style">Moderno institucional</div>
+                    <ul class="pricing-features">
+                        <li>Todo lo anterior +</li>
+                        <li>Diseño visual NASA</li>
+                        <li>Gráficos dinámicos</li>
+                        <li>Branding institucional</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-title">Premium E-Learning</div>
+                    <div class="pricing-price">$9.180.000</div>
+                    <div class="pricing-style">Documental contemporáneo</div>
+                    <ul class="pricing-features">
+                        <li>Todo lo anterior +</li>
+                        <li>Animación híbrida</li>
+                        <li>Cápsulas narrativas</li>
+                        <li>Ritmo profesional</li>
+                        <li>Storytelling avanzado</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-title">Interactiva SCORM</div>
+                    <div class="pricing-price">$12.240.000</div>
+                    <div class="pricing-style">Plataforma completa</div>
+                    <ul class="pricing-features">
+                        <li>Todo lo anterior +</li>
+                        <li>Navegación interactiva</li>
+                        <li>Checkpoints de progreso</li>
+                        <li>Seguimiento de avance</li>
+                        <li>Integración Moodle</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 style="color: white;">Solicitar Propuesta</h2>
+            <p class="section-intro" style="color: rgba(255,255,255,0.9);">
+                ¿Listo para transformar la capacitación en NASA? Contáctenos para recibir una propuesta detallada
+            </p>
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email corporativo</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje / Consulta</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Enviar Solicitud</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scroll for CTA button
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por su interés! Nos pondremos en contacto a la brevedad.');
+            this.reset();
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.module-card, .pricing-card, .concept-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
