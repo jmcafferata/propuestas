@@ -588,10 +588,29 @@
         <div class="container">
             <h2>Niveles de Producción</h2>
             <p class="section-intro">A mayor inversión → mejores gráficos, movimiento, storytelling y retención</p>
+            
+            <!-- Pricing Toggle -->
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <div style="display: inline-flex; background: white; padding: 0.5rem; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <button id="packBtn" class="pricing-toggle active" style="padding: 0.75rem 2rem; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; background: var(--gradient); color: white;">
+                        Pack Completo (5 videos)
+                    </button>
+                    <button id="individualBtn" class="pricing-toggle" style="padding: 0.75rem 2rem; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; background: transparent; color: var(--text-dark);">
+                        Precio por Video
+                    </button>
+                </div>
+                <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                    <span id="savingsNote" style="color: var(--primary-blue); font-weight: 600;">💡 Ahorra comprando el pack completo</span>
+                </p>
+            </div>
+
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="pricing-title">Registro Limpio</div>
-                    <div class="pricing-price">$4.080.000</div>
+                    <div class="pricing-price">
+                        <span class="pack-price">$4.080.000</span>
+                        <span class="individual-price" style="display: none;">$950.000</span>
+                    </div>
                     <div class="pricing-style">Informativo</div>
                     <ul class="pricing-features">
                         <li>Filmación profesional</li>
@@ -603,7 +622,10 @@
 
                 <div class="pricing-card">
                     <div class="pricing-title">Pro Corporativo</div>
-                    <div class="pricing-price">$6.120.000</div>
+                    <div class="pricing-price">
+                        <span class="pack-price">$6.120.000</span>
+                        <span class="individual-price" style="display: none;">$1.425.000</span>
+                    </div>
                     <div class="pricing-style">Moderno institucional</div>
                     <ul class="pricing-features">
                         <li>Todo lo anterior +</li>
@@ -615,7 +637,10 @@
 
                 <div class="pricing-card featured">
                     <div class="pricing-title">Premium E-Learning</div>
-                    <div class="pricing-price">$9.180.000</div>
+                    <div class="pricing-price">
+                        <span class="pack-price">$9.180.000</span>
+                        <span class="individual-price" style="display: none;">$2.138.000</span>
+                    </div>
                     <div class="pricing-style">Documental contemporáneo</div>
                     <ul class="pricing-features">
                         <li>Todo lo anterior +</li>
@@ -628,7 +653,10 @@
 
                 <div class="pricing-card">
                     <div class="pricing-title">Interactiva SCORM</div>
-                    <div class="pricing-price">$12.240.000</div>
+                    <div class="pricing-price">
+                        <span class="pack-price">$12.240.000</span>
+                        <span class="individual-price" style="display: none;">$2.850.000</span>
+                    </div>
                     <div class="pricing-style">Plataforma completa</div>
                     <ul class="pricing-features">
                         <li>Todo lo anterior +</li>
@@ -714,6 +742,41 @@
             card.style.transform = 'translateY(30px)';
             card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(card);
+        });
+
+        // Pricing Toggle
+        const packBtn = document.getElementById('packBtn');
+        const individualBtn = document.getElementById('individualBtn');
+        const savingsNote = document.getElementById('savingsNote');
+        
+        packBtn.addEventListener('click', function() {
+            // Update buttons
+            packBtn.style.background = 'var(--gradient)';
+            packBtn.style.color = 'white';
+            individualBtn.style.background = 'transparent';
+            individualBtn.style.color = 'var(--text-dark)';
+            
+            // Show pack prices
+            document.querySelectorAll('.pack-price').forEach(el => el.style.display = 'inline');
+            document.querySelectorAll('.individual-price').forEach(el => el.style.display = 'none');
+            
+            // Update note
+            savingsNote.innerHTML = '💡 Ahorra comprando el pack completo';
+        });
+        
+        individualBtn.addEventListener('click', function() {
+            // Update buttons
+            individualBtn.style.background = 'var(--gradient)';
+            individualBtn.style.color = 'white';
+            packBtn.style.background = 'transparent';
+            packBtn.style.color = 'var(--text-dark)';
+            
+            // Show individual prices
+            document.querySelectorAll('.pack-price').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.individual-price').forEach(el => el.style.display = 'inline');
+            
+            // Update note
+            savingsNote.innerHTML = '⚠️ Precio por video individual (más costoso que el pack)';
         });
     </script>
 </body>
